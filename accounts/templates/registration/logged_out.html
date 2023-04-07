@@ -1,0 +1,24 @@
+{% extends "registration_base.html" %}
+{% block content %}
+{% load static %}
+<div class="message-card py-12 h-screen bg-gray-300">
+  <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-md">
+    <div class="md:flex">
+      <div class="w-full p-3 py-10">
+        <div class="flex justify-center">
+          <img src="{% static 'images/success-msg.png' %}" width="80" />
+        </div>
+        <div class="flex justify-center mt-3">
+          <span class="text-xl font-medium">Logout Successful!</span>
+        </div>
+
+        <p class="px-16 text-center text-gray-400">Return to login..</p>
+    
+        <div class="px-14 mt-5">
+          <a href="{% url 'login' %}" class="btn h-12 bg-blue-700 w-full text-white text-md rounded hover:shadow hover:bg-blue-800">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+{% endblock %}

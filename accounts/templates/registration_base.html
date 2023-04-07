@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Icon Css Incloude-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="{% static 'font/flaticon.css' %}">
+    <!-- Bootstrap CSS File -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" />
+    <!-- Custom Css Include-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <div class="message-card py-12 h-screen bg-gray-300">
+      <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-md">
+        <div class="md:flex">
+          <div class="w-full p-3 py-10">
+            <div class="flex justify-center">
+              <img src="{% static 'images/error-msg.png' %}" width="80" />
+            </div>
+    
+            <div class="flex justify-center mt-3">
+              <span class="text-xl font-medium">You are already logged in!</span>
+            </div>
+    
+            <p class="px-16 text-center text-gray-400">Return to home from here..</p>
+    
+            <div class="px-14 mt-5">
+              <a href="#" class="btn h-12 bg-blue-700 w-full text-white text-md rounded hover:shadow hover:bg-blue-800">Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    {% block content %}{% endblock content %}
+    {% endif %}
+    <!-- This Is All Plugins used-->
+    <!-- JQuery Plugins include-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap 4 Plugins include-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <!-- Custom JQuery File-->
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
