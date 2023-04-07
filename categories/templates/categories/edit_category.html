@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+<!-- Start Main Section -->
+<section class="wrapper__main">
+  <!-- Start Edit Category Section -->
+  <div class="content">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h4 class="page-title">Edit Category</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <div class="col-12">
+              <input ref="btn" type="submit" class="btn btn-primary text-uppercase" value="Edit Category" />
+            </div>
+          </form>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Edit Category Section -->
+</section>
+<!-- End Main Section -->
+{% endblock content %}

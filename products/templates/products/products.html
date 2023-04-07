@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- Start Main Section -->
+<section class="wrapper__main">
+  <!-- Start Products Section -->
+  <div class="content product-section">
+    <div class="row">
+      <div class="col-sm-4 col-3">
+        <h4 class="page-title">Products</h4>
+      </div>
+      <div class="col-sm-8 col-9 text-right m-b-20">
+        <a href="{% url 'products:add_product' %}" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Product</a>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 27px;">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <div class="wrapper__dataTables container-fluid">
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-border table-striped custom-table datatable m-b-0 dataTable">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">PRODUCT NAME</th>
+                      <th scope="col">DESCRIPTION</th>
+                      <th scope="col">CATEGORY</th>
+                      <th scope="col">PRICE</th>
+                      <th scope="col" class="text-right sorting">ACTION</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for product in products %}
+                    <!-- Start Product Item -->
+                    <tr>
+                      <td class="product-img" scope="row">
+                        {% if product.product_image %}
+                        <img src="{{product.product_image.url}}" alt="product-img" />
+                        {% else %}
+                        <img src="{% static 'images/default_img.png' %}" alt="product-img" />
+                        {% endif %}
+                      </td>
+                      <td class="td-item">{{product.product_name}}</td>
+                      <td class="td-item">{{product.product_description}}</td>
+                      <td class="td-item">{{product.product_category}}</td>
+                      <td class="td-item">${{product.product_price}}</td>
+                      <td class="text-right">
+                        <div class="dropdown dropdown-action patient-action">
+                          <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a href="{% url 'products:edit_product' product.id %}" class="dropdown-item"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                            <a href="{% url 'products:delete_product' product.id %}" class="dropdown-item"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- End Product Item -->
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Products Section -->
+</section>
+<!-- End Main Section -->
+{% endblock content %}
